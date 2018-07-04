@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/deneme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            attrs:targetApi="lollipop" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/round_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="475dp" />
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/page_indicator_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:piv_animationType="scale"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            app:piv_selectedColor="#008000"
+            app:piv_unselectedColor="#00FF00"
+            app:piv_viewPager="@id/round_viewpager"
+            attrs:piv_padding="12dp"
+            attrs:piv_radius="8dp" />
+
+
+    </LinearLayout>
+</RelativeLayout>
