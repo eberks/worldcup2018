@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
+public class GroupTableAdapter extends RecyclerView.Adapter<GroupTableAdapter.ViewHolder> {
 
     private Group gData;
     private LayoutInflater customInflater;
@@ -25,7 +25,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
 
     List<TeamPosition> positioningTeams = new ArrayList<>();
 
-    public TopAdapter(Context context, Group group, WorldCupResponse worldCupResponse) {
+    public GroupTableAdapter(Context context, Group group, WorldCupResponse worldCupResponse) {
         this.context = context;
         this.customInflater = LayoutInflater.from(context);
         this.gData = group;
@@ -44,13 +44,13 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public TopAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GroupTableAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = customInflater.inflate(R.layout.top_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TopAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GroupTableAdapter.ViewHolder holder, int position) {
 
 
         Picasso.with(context).load(positioningTeams.get(position).getPositionedTeam().getFlag()).into(holder.imgFlag);

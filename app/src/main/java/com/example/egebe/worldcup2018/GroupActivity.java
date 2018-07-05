@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -16,11 +15,13 @@ import android.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
-public class GroupActivity extends Activity implements BottomAdapter.OnMatchItemClickListener  {
+import java.util.ArrayList;
 
-    TopAdapter topAdapter;
-    BottomAdapter bottomAdapter;
-    ImageView backgroundImage;
+public class GroupActivity extends Activity implements MatchDisplayAdapter.OnMatchItemClickListener {
+
+    private GroupTableAdapter groupTableAdapter;
+    private MatchDisplayAdapter bottomAdapter;
+    private ImageView backgroundImage;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -56,11 +57,11 @@ public class GroupActivity extends Activity implements BottomAdapter.OnMatchItem
         }
 
 
-        topAdapter = new TopAdapter(this, group, worldCupResponse);
-        topGroupView.setAdapter(topAdapter);
+        groupTableAdapter = new GroupTableAdapter(this, group, worldCupResponse);
+        topGroupView.setAdapter(groupTableAdapter);
 
-        final BottomAdapter.OnMatchItemClickListener tempListener = this;
-        bottomAdapter = new BottomAdapter(this, group, worldCupResponse,tempListener);
+        final MatchDisplayAdapter.OnMatchItemClickListener tempListener = this;
+        bottomAdapter = new MatchDisplayAdapter(this, (ArrayList<Match>) group.getMatches(), tempListener);
         bottomGroupView.setAdapter(bottomAdapter);
 
         backgroundImage = findViewById(R.id.group_background_image);

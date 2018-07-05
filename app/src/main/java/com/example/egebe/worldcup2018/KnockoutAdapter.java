@@ -8,7 +8,7 @@ public class KnockoutAdapter extends FragmentPagerAdapter {
 
     private static int NUM_ITEMS = 5;
 
-    private static WorldCupResponse singleton = WorldCupData.getInstance().getWorldCupResponse();
+    private static WorldCupResponse singleton = WorldCupDataSingleton.getInstance().getWorldCupResponse();
 
     public KnockoutAdapter(FragmentManager fm) {
         super(fm);
@@ -16,7 +16,6 @@ public class KnockoutAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
 
 
         return KnockoutFragment.newInstance(singleton.getKnockout().getAsList().get(position));

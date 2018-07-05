@@ -31,7 +31,7 @@ data class Group(var name: String,
 ) : Serializable {
 
     fun getTeamsInGroup(): List<Team> {
-        val worldCupResponse = WorldCupData.getInstance().worldCupResponse
+        val worldCupResponse = WorldCupDataSingleton.getInstance().worldCupResponse
         val teamIds = java.util.ArrayList<Int>()
         val teams = java.util.ArrayList<Team>()
 
@@ -144,7 +144,82 @@ data class Match(var name: Int,
         //   var channels: Channel
                  var finished: Boolean,
                  var matchday: Int
-) : Serializable
+) : Serializable {
+    fun getMatchInformations(listMatch: List<Match>): FullMatchObject {
+        val teamIds = java.util.ArrayList<Int>()
+        val teams = java.util.ArrayList<Team>()
+        val wcrData = WorldCupDataSingleton.getInstance().worldCupResponse
+        var homeTeamName = ""
+        var awayTeamName = ""
+        var homeTeamScore = 0
+        var awayTeamScore = 0
+        var matchNumber = 0
+
+
+        run {
+            var i = 0
+            while (i < listMatch.size) {
+
+                if (teamIds.contains(listMatch.get(i).away_team)) {
+                    i++
+                } else {
+                    teamIds.add(listMatch.get(i).away_team)
+                }
+                i++
+            }
+        }
+        run {
+            var i = 0
+            while (i < listMatch.size) {
+
+                if (teamIds.contains(listMatch.get(i).home_team)) {
+                    i++
+                } else {
+                    teamIds.add(listMatch.get(i).home_team)
+                }
+                i++
+            }
+        }
+
+        for (i in teamIds.indices) {
+
+            for (j in 0 until wcrData.teams.size) {
+
+                if (wcrData.teams.get(j).id == teamIds[i]) {
+                    teams.add(wcrData.teams.get(j))
+                }
+
+            }
+
+        }
+
+
+        //------------------------- setOperation ----------------------------------------------------
+
+        for (i in teams.indices) {
+            if (teams[i].id == this.home_team)
+
+                homeTeamName = teams[i].name
+        }
+        for (i in teams.indices) {
+            if (teams[i].id == this.away_team)
+                awayTeamName = teams[i].name
+        }
+        for (i in teams.indices) {
+            if (teams[i].id == this.home_team)
+                homeTeamScore = this.home_result
+        }
+        for (i in teams.indices) {
+            if (teams[i].id == this.away_team)
+
+                awayTeamScore = this.away_result
+        }
+
+        matchNumber = this.matchday;
+
+        return FullMatchObject(homeTeamName, awayTeamName, homeTeamScore, awayTeamScore, matchNumber)
+    }
+}
 
 data class Team(var id: Int,
                 var name: String,
@@ -193,6 +268,16 @@ data class Stadium(var id: Int,
                    var lat: Double,
                    var lng: Double,
                    var image: String
+
+) : Serializable
+
+data class FullMatchObject(var homeTeamName: String,
+                           var awayTeamName: String,
+                           var homeTeamScore: Int,
+                           var awayTeamScore: Int,
+                           var matchNumber: Int
+        //  var homeTeam: Team,
+        // var awayTeam: Team
 
 ) : Serializable
 

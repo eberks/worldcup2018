@@ -2,7 +2,7 @@ package com.example.egebe.worldcup2018;
 
 import android.support.annotation.NonNull;
 
-public class TeamPosition implements  Comparable<TeamPosition> {
+public class TeamPosition implements Comparable<TeamPosition> {
 
     private Team positionedTeam;
     private int numberOfMatch;
@@ -100,6 +100,6 @@ public class TeamPosition implements  Comparable<TeamPosition> {
 
     @Override
     public int compareTo(@NonNull TeamPosition o) {
-        return Integer.compare(getTotalPoint(),o.getTotalPoint() );
+        return Integer.compare(getTotalPoint(), o.getTotalPoint());
     }
 }

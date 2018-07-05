@@ -10,9 +10,9 @@ import com.squareup.picasso.Picasso;
 
 public class StadiumActivity extends Activity {
 
-    private WorldCupResponse worldCupResponse = WorldCupData.getInstance().getWorldCupResponse();
+    private WorldCupResponse worldCupResponse = WorldCupDataSingleton.getInstance().getWorldCupResponse();
     private Stadium tempStadium;
-    ImageView imgStadium;
+    private ImageView imgStadium;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

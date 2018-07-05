@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements GroupAdapter.OnGr
             public void onResponse(Call<WorldCupResponse> call, Response<WorldCupResponse> response) {
 
                 mWorldCupResponse = response.body();
-                WorldCupData.getInstance().setWorldCupResponse(response.body());
+                WorldCupDataSingleton.getInstance().setWorldCupResponse(response.body());
                 List<Group> groupList = new ArrayList<>();
 
                 groupList.add(response.body().getGroups().getA());

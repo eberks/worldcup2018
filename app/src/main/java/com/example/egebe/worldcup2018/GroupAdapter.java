@@ -15,7 +15,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
     private LayoutInflater customInflater;
     private Context context;
-    List<Group> tData;
+    private List<Group> tData;
     private OnGroupItemClickListener tListener;
 
     public GroupAdapter(Context context, List<Group> data, OnGroupItemClickListener listener) {

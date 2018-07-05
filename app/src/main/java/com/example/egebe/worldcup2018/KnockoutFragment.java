@@ -16,6 +16,7 @@ public class KnockoutFragment extends Fragment {
 
     private Knockout mKnockout;
     private MatchDisplayAdapter mBottomAdapter;
+    private MatchDisplayAdapter.OnMatchItemClickListener tempListener;
 
     public static KnockoutFragment newInstance(Knockout knockOut) {
         KnockoutFragment knockoutFragment = new KnockoutFragment();
@@ -45,7 +46,7 @@ public class KnockoutFragment extends Fragment {
         TextView tvRoundTitle = view.findViewById(R.id.round_title);
         tvRoundTitle.setText(mKnockout.getName());
 
-        mBottomAdapter = new MatchDisplayAdapter(getContext(), (ArrayList<Match>) mKnockout.getMatches());
+        mBottomAdapter = new MatchDisplayAdapter(getContext(), (ArrayList<Match>) mKnockout.getMatches(), tempListener);
         bottomGroupView.setLayoutManager(new LinearLayoutManager(getActivity()));
         bottomGroupView.setAdapter(mBottomAdapter);
 

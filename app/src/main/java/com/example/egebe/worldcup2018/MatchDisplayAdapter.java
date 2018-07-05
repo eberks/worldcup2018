@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,8 +16,9 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
 
     private LayoutInflater customInflater;
     private Context context;
-    private WorldCupResponse wcrData = WorldCupData.getInstance().getWorldCupResponse();
     private ArrayList<Match> listMatch;
+    private MatchDisplayAdapter.OnMatchItemClickListener matchItemClickListener;
+    private List<FullMatchObject> fullMatchObjectList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -26,66 +28,34 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
     }
 
 
-    MatchDisplayAdapter(Context context, ArrayList<Match> listMatch) {
+    MatchDisplayAdapter(Context context, ArrayList<Match> listMatch, MatchDisplayAdapter.OnMatchItemClickListener listener) {
         this.context = context;
         this.listMatch = listMatch;
         this.customInflater = LayoutInflater.from(this.context);
+        this.matchItemClickListener = listener;
+
+        for (int i = 0; i < getItemCount(); i++) {
+            FullMatchObject currentMatch = listMatch.get(i).getMatchInformations(listMatch);
+            fullMatchObjectList.add(currentMatch);
+        }
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull MatchDisplayAdapter.ViewHolder holder, int position) {
 
-        Match tempMatch=listMatch.get(position);
-        List<Integer> teamIds = new ArrayList<>();
-        List<Team> teams = new ArrayList<>();
-        for (int i = 0; i < listMatch.size(); i++) {
 
-            if (teamIds.contains(listMatch.get(i).getAway_team())) {
-                i++;
-            } else {
-                teamIds.add(listMatch.get(i).getAway_team());
+        holder.homeTeam.setText(fullMatchObjectList.get(position).getHomeTeamName() + "");
+        holder.awayTeam.setText(fullMatchObjectList.get(position).getAwayTeamName() + "");
+        holder.homeScore.setText(fullMatchObjectList.get(position).getHomeTeamScore() + "");
+        holder.awayScore.setText(fullMatchObjectList.get(position).getAwayTeamScore() + "");
+        holder.matchDate.setText(fullMatchObjectList.get(position).getMatchNumber() + "");
+        holder.matchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matchItemClickListener.onMatchItemClicked(listMatch.get(position));
             }
-        }
-        for (int i = 0; i < listMatch.size(); i++) {
-
-            if (teamIds.contains(listMatch.get(i).getHome_team())) {
-                i++;
-            } else {
-                teamIds.add(listMatch.get(i).getHome_team());
-            }
-        }
-
-        for (int i = 0; i < teamIds.size(); i++) {
-
-            for (int j = 0; j < wcrData.getTeams().size(); j++) {
-
-                if (wcrData.getTeams().get(j).getId() == teamIds.get(i)) {
-                    teams.add(wcrData.getTeams().get(j));
-                }
-
-            }
-
-        }
-
-        for (int i = 0; i < teams.size(); i++) {
-            if (teams.get(i).getId() == tempMatch.getHome_team())
-                holder.homeTeam.setText(teams.get(i).getName());
-        }
-        for (int i = 0; i < teams.size(); i++) {
-            if (teams.get(i).getId() == tempMatch.getAway_team())
-                holder.awayTeam.setText(teams.get(i).getName());
-        }
-        for (int i = 0; i < teams.size(); i++) {
-            if (teams.get(i).getId() == tempMatch.getHome_team())
-                holder.homeScore.setText(tempMatch.getHome_result() + "");
-        }
-        for (int i = 0; i < teams.size(); i++) {
-            if (teams.get(i).getId() == tempMatch.getAway_team())
-                holder.awayScore.setText(tempMatch.getAway_result() + "");
-        }
-
-        holder.matchDate.setText(tempMatch.getMatchday() + "");
+        });
 
     }
 
@@ -100,6 +70,8 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
         TextView homeScore;
         TextView awayScore;
         TextView awayTeam;
+        LinearLayout matchLayout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             matchDate = itemView.findViewById(R.id.match_date);
@@ -107,6 +79,11 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
             homeScore = itemView.findViewById(R.id.home_score);
             awayScore = itemView.findViewById(R.id.away_score);
             awayTeam = itemView.findViewById(R.id.away_team);
+            matchLayout = itemView.findViewById(R.id.match_row);
         }
+    }
+
+    interface OnMatchItemClickListener {
+        void onMatchItemClicked(Match match);
     }
 }

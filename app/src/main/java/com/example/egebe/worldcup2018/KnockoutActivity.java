@@ -16,8 +16,8 @@ import com.squareup.picasso.Picasso;
 
 
 public class KnockoutActivity extends AppCompatActivity {
-    KnockoutAdapter knockoutAdapter;
-    ImageView imgFlag;
+    private KnockoutAdapter knockoutAdapter;
+    private ImageView imgFlag;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

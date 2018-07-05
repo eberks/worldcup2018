@@ -1,19 +1,19 @@
 package com.example.egebe.worldcup2018;
 
-class WorldCupData {
-    private static WorldCupData ourInstance = null;
+class WorldCupDataSingleton {
+    private static WorldCupDataSingleton ourInstance = null;
 
-     public static WorldCupData getInstance() {
-         if(ourInstance == null) {
-             ourInstance = new WorldCupData();
-         }
+    public static WorldCupDataSingleton getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new WorldCupDataSingleton();
+        }
 
         return ourInstance;
     }
 
     private WorldCupResponse worldCupResponse;
 
-    private WorldCupData() {
+    private WorldCupDataSingleton() {
     }
 
     public void setWorldCupResponse(WorldCupResponse response) {
