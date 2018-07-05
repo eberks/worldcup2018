@@ -28,7 +28,109 @@ data class Group(var name: String,
                  var winner: Int,
                  var runnerup: Int,
                  var matches: List<Match>
-) : Serializable
+) : Serializable {
+
+    fun getTeamsInGroup(): List<Team> {
+        val worldCupResponse = WorldCupData.getInstance().worldCupResponse
+        val teamIds = java.util.ArrayList<Int>()
+        val teams = java.util.ArrayList<Team>()
+
+        run {
+            var i = 0
+            while (i < this.matches.size) {
+
+                if (teamIds.contains(this.matches.get(i).away_team)) {
+                    i++
+                } else {
+                    teamIds.add(this.matches.get(i).away_team)
+                }
+                i++
+            }
+        }
+        run {
+            var i = 0
+            while (i < this.matches.size) {
+
+                if (teamIds.contains(this.matches.get(i).home_team)) {
+                    i++
+                } else {
+                    teamIds.add(this.matches.get(i).home_team)
+                }
+                i++
+            }
+        }
+
+        for (i in teamIds.indices) {
+
+            for (j in 0 until worldCupResponse.teams.size) {
+
+                if (worldCupResponse.teams.get(j).id == teamIds[i]) {
+                    teams.add(worldCupResponse.teams.get(j))
+                }
+
+            }
+
+        }
+        return teams;
+    }
+
+    fun fillTeamPositionObject(currentTeam: Team): TeamPosition {
+        var numOfMatch = 0
+        var numOfWin = 0
+        var numOfDraw = 0
+        var numOfLose = 0
+
+
+        for (i in 0 until this.matches.size) {
+            if (this.matches[i].away_team == currentTeam.id) numOfMatch++
+        }
+        for (i in 0 until this.matches.size) {
+            if (this.matches[i].home_team == currentTeam.id) numOfMatch++
+        }
+        for (i in 0 until this.matches.size) {
+            if (this.matches[i].away_team == currentTeam.id && this.matches[i].away_result > this.matches.get(i).home_result) {
+                numOfWin++
+            } else if (this.matches.get(i).away_team == currentTeam.id && this.matches[i].away_result < this.matches.get(i).home_result) {
+                numOfLose++
+            } else if (this.matches.get(i).away_team == currentTeam.id && this.matches.get(i).away_result == this.matches.get(i).home_result) {
+                numOfDraw++
+            }
+        }
+        for (i in 0 until this.matches.size) {
+            if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result > this.matches.get(i).away_result) {
+                numOfWin++
+            } else if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result < this.matches.get(i).away_result) {
+                numOfLose++
+            } else if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result == this.matches.get(i).away_result) {
+                numOfDraw++
+            }
+        }
+        val totalPoint = numOfWin * 3 + numOfDraw
+        var totalGS = 0
+        var totalGC = 0
+
+        for (i in 0 until this.matches.size) {
+            if (this.matches.get(i).away_team == currentTeam.id) {
+                totalGS = totalGS + this.matches.get(i).away_result
+                totalGC = totalGC + this.matches.get(i).home_result
+            }
+
+        }
+        for (i in 0 until this.matches.size) {
+            if (this.matches.get(i).home_team == currentTeam.id) {
+                totalGS = totalGS + this.matches.get(i).home_result
+                totalGC = totalGC + this.matches.get(i).away_result
+            }
+
+        }
+
+        val totalAverage = totalGS - totalGC
+
+        return TeamPosition(currentTeam, numOfMatch, numOfWin, numOfDraw, numOfLose, totalGS, totalGC, totalAverage, totalPoint)
+
+    }
+
+}
 
 
 data class Match(var name: Int,
@@ -70,6 +172,20 @@ data class KnockoutResponse(var round_16: Knockout,
         return listKnockout
     }
 }
+
+/*
+data class TeamPosition(var positionedTeam: Team,
+                        var numberOfMatch: Int,
+                        var numberOfWin: Int,
+                        var numberOfDraw: Int,
+                        var numberOfLose: Int,
+                        var totalGoalScored: Int,
+                        var totalGoalConceded: Int,
+                        var totalAverage: Int,
+                        var totalPoint: Int
+
+) : Serializable
+*/
 
 
 

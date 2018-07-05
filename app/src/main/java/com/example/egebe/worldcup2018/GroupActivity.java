@@ -13,11 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GroupActivity extends Activity {
 
@@ -34,12 +30,10 @@ public class GroupActivity extends Activity {
 
         Intent intent = getIntent();
 
-       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setActionBar(toolbar);
-       getActionBar().setDisplayHomeAsUpEnabled(true);
-       getActionBar().setDisplayShowHomeEnabled(true);
-
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setActionBar(toolbar);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayShowHomeEnabled(true);
 
 
         Group group = (Group) intent.getSerializableExtra("extra_group");
@@ -52,44 +46,12 @@ public class GroupActivity extends Activity {
         bottomGroupView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        List<Integer> teamIds = new ArrayList<>();
-        List<Team> teams = new ArrayList<>();
-
-        for (int i = 0; i < group.getMatches().size(); i++) {
-
-            if (teamIds.contains(group.getMatches().get(i).getAway_team())) {
-                i++;
-            } else {
-                teamIds.add(group.getMatches().get(i).getAway_team());
-            }
-        }
-        for (int i = 0; i < group.getMatches().size(); i++) {
-
-            if (teamIds.contains(group.getMatches().get(i).getHome_team())) {
-                i++;
-            } else {
-                teamIds.add(group.getMatches().get(i).getHome_team());
-            }
-        }
-
-        for (int i = 0; i < teamIds.size(); i++) {
-
-            for (int j = 0; j < worldCupResponse.getTeams().size(); j++) {
-
-                if (worldCupResponse.getTeams().get(j).getId() == teamIds.get(i)) {
-                    teams.add(worldCupResponse.getTeams().get(j));
-                }
-
-            }
-
-        }
-
         TextView winnerText = findViewById(R.id.winner_text);
 
-        for (int i = 0; i < teams.size(); i++) {
-            if (teams.get(i).getId() == group.getWinner())
+        for (int i = 0; i < group.getTeamsInGroup().size(); i++) {
+            if (group.getTeamsInGroup().get(i).getId() == group.getWinner())
 
-                winnerText.setText("The Winner of " + group.getName() + " is " + teams.get(i).getName() + "!");
+                winnerText.setText("The Winner of " + group.getName() + " is " + group.getTeamsInGroup().get(i).getName() + "!");
         }
 
 

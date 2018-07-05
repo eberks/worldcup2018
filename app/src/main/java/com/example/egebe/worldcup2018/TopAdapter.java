@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -22,11 +23,23 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
     private Context context;
     private WorldCupResponse wcrData;
 
+    List<TeamPosition> positioningTeams = new ArrayList<>();
+
     public TopAdapter(Context context, Group group, WorldCupResponse worldCupResponse) {
         this.context = context;
         this.customInflater = LayoutInflater.from(context);
         this.gData = group;
         this.wcrData = worldCupResponse;
+
+        for (int i = 0; i < getItemCount(); i++) {
+            Team currentTeam = gData.getTeamsInGroup().get(i);
+            TeamPosition teamPosition = gData.fillTeamPositionObject(currentTeam);
+            positioningTeams.add(teamPosition);
+            Collections.sort(positioningTeams);
+            Collections.reverse(positioningTeams);
+        }
+
+
     }
 
     @NonNull
@@ -40,98 +53,13 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull TopAdapter.ViewHolder holder, int position) {
 
 
-        List<Integer> teamIds = new ArrayList<>();
-        List<Team> teams = new ArrayList<>();
-
-
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-
-            if (teamIds.contains(gData.getMatches().get(i).getAway_team())) {
-                i++;
-            } else {
-                teamIds.add(gData.getMatches().get(i).getAway_team());
-            }
-        }
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-
-            if (teamIds.contains(gData.getMatches().get(i).getHome_team())) {
-                i++;
-            } else {
-                teamIds.add(gData.getMatches().get(i).getHome_team());
-            }
-        }
-
-        for (int i = 0; i < teamIds.size(); i++) {
-
-            for (int j = 0; j < wcrData.getTeams().size(); j++) {
-
-                if (wcrData.getTeams().get(j).getId() == teamIds.get(i)) {
-                    teams.add(wcrData.getTeams().get(j));
-                }
-
-            }
-
-        }
-
-        Team currentTeam = teams.get(position);
-        int numOfMatch = 0;
-        int numOfWin = 0;
-        int numOfDraw = 0;
-        int numOfLose = 0;
-
-
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getAway_team() == currentTeam.getId()) numOfMatch++;
-        }
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getHome_team() == currentTeam.getId()) numOfMatch++;
-        }
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getAway_team() == currentTeam.getId() && gData.getMatches().get(i).getAway_result() > gData.getMatches().get(i).getHome_result()) {
-                numOfWin++;
-            } else if (gData.getMatches().get(i).getAway_team() == currentTeam.getId() && gData.getMatches().get(i).getAway_result() < gData.getMatches().get(i).getHome_result()) {
-                numOfLose++;
-            } else if (gData.getMatches().get(i).getAway_team() == currentTeam.getId() && gData.getMatches().get(i).getAway_result() == gData.getMatches().get(i).getHome_result()) {
-                numOfDraw++;
-            }
-        }
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getHome_team() == currentTeam.getId() && gData.getMatches().get(i).getHome_result() > gData.getMatches().get(i).getAway_result()) {
-                numOfWin++;
-            } else if (gData.getMatches().get(i).getHome_team() == currentTeam.getId() && gData.getMatches().get(i).getHome_result() < gData.getMatches().get(i).getAway_result()) {
-                numOfLose++;
-            } else if (gData.getMatches().get(i).getHome_team() == currentTeam.getId() && gData.getMatches().get(i).getHome_result() == gData.getMatches().get(i).getAway_result()) {
-                numOfDraw++;
-            }
-        }
-        int totalPoint = (numOfWin * 3) + (numOfDraw);
-        int totalGS = 0;
-        int totalGC = 0;
-
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getAway_team() == currentTeam.getId()) {
-                totalGS = totalGS + gData.getMatches().get(i).getAway_result();
-                totalGC = totalGC + gData.getMatches().get(i).getHome_result();
-            }
-
-        }
-        for (int i = 0; i < gData.getMatches().size(); i++) {
-            if (gData.getMatches().get(i).getHome_team() == currentTeam.getId()) {
-                totalGS = totalGS + gData.getMatches().get(i).getHome_result();
-                totalGC = totalGC + gData.getMatches().get(i).getAway_result();
-            }
-
-        }
-
-        int totalAverage = totalGS - totalGC;
-
-        Picasso.with(context).load(teams.get(position).getFlag()).into(holder.imgFlag);
-        holder.txtName.setText(teams.get(position).getName());
-        holder.txtPlayed.setText("" + numOfMatch + "");
-        holder.txtWdl.setText(numOfWin + "-" + numOfDraw + "-" + numOfLose);
-        holder.txtGoals.setText(totalGS + "-" + totalGC);
-        holder.txtAverage.setText("" + totalAverage + "");
-        holder.txtPoint.setText("" + totalPoint + "");
+        Picasso.with(context).load(positioningTeams.get(position).getPositionedTeam().getFlag()).into(holder.imgFlag);
+        holder.txtName.setText(positioningTeams.get(position).getPositionedTeam().getName());
+        holder.txtPlayed.setText("" + positioningTeams.get(position).getNumberOfMatch() + "");
+        holder.txtWdl.setText(positioningTeams.get(position).getNumberOfWin() + "-" + positioningTeams.get(position).getNumberOfDraw() + "-" + positioningTeams.get(position).getNumberOfLose() + "");
+        holder.txtGoals.setText(positioningTeams.get(position).getTotalGoalScored() + "" + positioningTeams.get(position).getTotalGoalConceded());
+        holder.txtAverage.setText("" + positioningTeams.get(position).getTotalAverage() + "");
+        holder.txtPoint.setText("" + positioningTeams.get(position).getTotalPoint() + "");
 
 
     }
