@@ -1,5 +1,6 @@
 package com.example.egebe.worldcup2018;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -15,13 +16,13 @@ import android.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
-public class GroupActivity extends Activity {
+public class GroupActivity extends Activity implements BottomAdapter.OnMatchItemClickListener  {
 
     TopAdapter topAdapter;
     BottomAdapter bottomAdapter;
     ImageView backgroundImage;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,8 @@ public class GroupActivity extends Activity {
         topAdapter = new TopAdapter(this, group, worldCupResponse);
         topGroupView.setAdapter(topAdapter);
 
-        bottomAdapter = new BottomAdapter(this, group, worldCupResponse);
+        final BottomAdapter.OnMatchItemClickListener tempListener = this;
+        bottomAdapter = new BottomAdapter(this, group, worldCupResponse,tempListener);
         bottomGroupView.setAdapter(bottomAdapter);
 
         backgroundImage = findViewById(R.id.group_background_image);
@@ -72,6 +74,13 @@ public class GroupActivity extends Activity {
             this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMatchItemClicked(Match match) {
+        Intent intent = new Intent(GroupActivity.this, StadiumActivity.class);
+        intent.putExtra("extra_match", match);
+        startActivity(intent);
     }
 }
 

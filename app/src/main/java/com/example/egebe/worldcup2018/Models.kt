@@ -6,7 +6,7 @@ import kotlin.collections.ArrayList
 
 
 data class WorldCupResponse(
-        // var stadiums: List<Stadium>,
+        var stadiums: List<Stadium>,
         // var tvchannels: List<TvChannel>,
         var teams: List<Team>,
         var groups: GroupResponse,
@@ -187,5 +187,13 @@ data class TeamPosition(var positionedTeam: Team,
 ) : Serializable
 */
 
+data class Stadium(var id: Int,
+                   var name: String,
+                   var city: String,
+                   var lat: Double,
+                   var lng: Double,
+                   var image: String
+
+) : Serializable
 
 

@@ -57,7 +57,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
         holder.txtName.setText(positioningTeams.get(position).getPositionedTeam().getName());
         holder.txtPlayed.setText("" + positioningTeams.get(position).getNumberOfMatch() + "");
         holder.txtWdl.setText(positioningTeams.get(position).getNumberOfWin() + "-" + positioningTeams.get(position).getNumberOfDraw() + "-" + positioningTeams.get(position).getNumberOfLose() + "");
-        holder.txtGoals.setText(positioningTeams.get(position).getTotalGoalScored() + "" + positioningTeams.get(position).getTotalGoalConceded());
+        holder.txtGoals.setText(positioningTeams.get(position).getTotalGoalScored() + "-" + positioningTeams.get(position).getTotalGoalConceded());
         holder.txtAverage.setText("" + positioningTeams.get(position).getTotalAverage() + "");
         holder.txtPoint.setText("" + positioningTeams.get(position).getTotalPoint() + "");
 

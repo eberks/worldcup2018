@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements CustomAdapter.OnGroupItemClickListener {
+public class MainActivity extends AppCompatActivity implements GroupAdapter.OnGroupItemClickListener {
 
     private WorldCupResponse mWorldCupResponse;
     private KnockoutResponse mKnockoutResponse;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.OnG
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final CustomAdapter.OnGroupItemClickListener tempListener = this;
+        final GroupAdapter.OnGroupItemClickListener tempListener = this;
 
         Button kButton = findViewById(R.id.knockout_button);
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.OnG
                 groupList.add(response.body().getGroups().getG());
                 groupList.add(response.body().getGroups().getH());
 
-                recyclerView.setAdapter(new CustomAdapter(MainActivity.this, groupList, tempListener));
+                recyclerView.setAdapter(new GroupAdapter(MainActivity.this, groupList, tempListener));
 
             }
 

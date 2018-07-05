@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,16 +19,17 @@ public class BottomAdapter extends RecyclerView.Adapter<BottomAdapter.ViewHolder
     private WorldCupResponse wcrData;
     private Knockout mKnockout;
     private List<Team> teams;
+    private OnMatchItemClickListener matchItemClickListener;
 
 
-    public BottomAdapter(Context context, Group group, WorldCupResponse worldCupResponse) {
+    public BottomAdapter(Context context, Group group, WorldCupResponse worldCupResponse, OnMatchItemClickListener listener) {
         this.context = context;
         this.customInflater = LayoutInflater.from(context);
         this.mData = group;
         this.wcrData = worldCupResponse;
-
         List<Team> teams = mData.getTeamsInGroup();
         this.teams = teams;
+        this.matchItemClickListener = listener;
 
     }
 
@@ -62,6 +64,13 @@ public class BottomAdapter extends RecyclerView.Adapter<BottomAdapter.ViewHolder
 
         holder.matchDate.setText(mData.getMatches().get(position).getMatchday() + "");
 
+        holder.matchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matchItemClickListener.onMatchItemClicked(mData.getMatches().get(position));
+            }
+        });
+
 
     }
 
@@ -76,6 +85,7 @@ public class BottomAdapter extends RecyclerView.Adapter<BottomAdapter.ViewHolder
         TextView homeScore;
         TextView awayScore;
         TextView awayTeam;
+        LinearLayout matchLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +94,11 @@ public class BottomAdapter extends RecyclerView.Adapter<BottomAdapter.ViewHolder
             homeScore = itemView.findViewById(R.id.home_score);
             awayScore = itemView.findViewById(R.id.away_score);
             awayTeam = itemView.findViewById(R.id.away_team);
+            matchLayout = itemView.findViewById(R.id.match_row);
         }
+    }
+
+    interface   OnMatchItemClickListener {
+        void onMatchItemClicked(Match match);
     }
 }

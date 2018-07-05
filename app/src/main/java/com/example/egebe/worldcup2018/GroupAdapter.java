@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> {
 
     private LayoutInflater customInflater;
     private Context context;
     List<Group> tData;
     private OnGroupItemClickListener tListener;
 
-    public CustomAdapter(Context context, List<Group> data, OnGroupItemClickListener listener) {
+    public GroupAdapter(Context context, List<Group> data, OnGroupItemClickListener listener) {
         this.context = context;
         this.customInflater = LayoutInflater.from(context);
         this.tData = data;
@@ -28,13 +28,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @NonNull
     @Override
-    public CustomAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GroupAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = customInflater.inflate(R.layout.each_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CustomAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final GroupAdapter.ViewHolder holder, final int position) {
 
         holder.groupName.setText(tData.get(position).getName().toUpperCase());
 
