@@ -50,6 +50,7 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
         holder.homeScore.setText(fullMatchObjectList.get(position).getHomeTeamScore() + "");
         holder.awayScore.setText(fullMatchObjectList.get(position).getAwayTeamScore() + "");
         holder.matchDate.setText(fullMatchObjectList.get(position).getMatchNumber() + "");
+
         holder.matchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

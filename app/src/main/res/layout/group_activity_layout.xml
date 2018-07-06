@@ -31,7 +31,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Flag         Name                     P  W/D/L  S/C  A  P"
+            android:text="Flag         Name                     P  W/D/L  S/C  A   P"
             android:textColor="#8B0000"
             android:textSize="16dp" />
 

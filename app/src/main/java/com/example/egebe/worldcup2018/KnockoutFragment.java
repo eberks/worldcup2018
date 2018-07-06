@@ -1,5 +1,6 @@
 package com.example.egebe.worldcup2018;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class KnockoutFragment extends Fragment {
+public class KnockoutFragment extends Fragment implements MatchDisplayAdapter.OnMatchItemClickListener {
 
     private Knockout mKnockout;
     private MatchDisplayAdapter mBottomAdapter;
@@ -45,11 +46,18 @@ public class KnockoutFragment extends Fragment {
         RecyclerView bottomGroupView = view.findViewById(R.id.knockout_matches);
         TextView tvRoundTitle = view.findViewById(R.id.round_title);
         tvRoundTitle.setText(mKnockout.getName());
-
+        tempListener = this;
         mBottomAdapter = new MatchDisplayAdapter(getContext(), (ArrayList<Match>) mKnockout.getMatches(), tempListener);
         bottomGroupView.setLayoutManager(new LinearLayoutManager(getActivity()));
         bottomGroupView.setAdapter(mBottomAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onMatchItemClicked(Match match) {
+        Intent intent = new Intent(getContext(), StadiumActivity.class);
+        intent.putExtra("extra_match", match);
+        startActivity(intent);
     }
 }
