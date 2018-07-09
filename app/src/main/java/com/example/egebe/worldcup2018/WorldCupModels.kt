@@ -1,5 +1,7 @@
 package com.example.egebe.worldcup2018
 
+import com.example.egebe.worldcup2018.models.TeamPosition
+import com.example.egebe.worldcup2018.models.WorldCupDataSingleton
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -248,20 +250,6 @@ data class KnockoutResponse(var round_16: Knockout,
     }
 }
 
-/*
-data class TeamPosition(var positionedTeam: Team,
-                        var numberOfMatch: Int,
-                        var numberOfWin: Int,
-                        var numberOfDraw: Int,
-                        var numberOfLose: Int,
-                        var totalGoalScored: Int,
-                        var totalGoalConceded: Int,
-                        var totalAverage: Int,
-                        var totalPoint: Int
-
-) : Serializable
-*/
-
 data class Stadium(var id: Int,
                    var name: String,
                    var city: String,
@@ -276,8 +264,6 @@ data class FullMatchObject(var homeTeamName: String,
                            var homeTeamScore: Int,
                            var awayTeamScore: Int,
                            var matchNumber: Int
-        //  var homeTeam: Team,
-        // var awayTeam: Team
 
 ) : Serializable
 

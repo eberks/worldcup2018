@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.groupdetail;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.egebe.worldcup2018.Group;
+import com.example.egebe.worldcup2018.R;
+import com.example.egebe.worldcup2018.Team;
+import com.example.egebe.worldcup2018.models.TeamPosition;
+import com.example.egebe.worldcup2018.WorldCupResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,11 +60,11 @@ public class GroupTableAdapter extends RecyclerView.Adapter<GroupTableAdapter.Vi
 
         Picasso.with(context).load(positioningTeams.get(position).getPositionedTeam().getFlag()).into(holder.imgFlag);
         holder.txtName.setText(positioningTeams.get(position).getPositionedTeam().getName());
-        holder.txtPlayed.setText("" + positioningTeams.get(position).getNumberOfMatch() + "");
+        holder.txtPlayed.setText(String.format("%d", positioningTeams.get(position).getNumberOfMatch()));
         holder.txtWdl.setText(positioningTeams.get(position).getNumberOfWin() + "-" + positioningTeams.get(position).getNumberOfDraw() + "-" + positioningTeams.get(position).getNumberOfLose() + "");
         holder.txtGoals.setText(positioningTeams.get(position).getTotalGoalScored() + "-" + positioningTeams.get(position).getTotalGoalConceded());
-        holder.txtAverage.setText("" + positioningTeams.get(position).getTotalAverage() + "");
-        holder.txtPoint.setText("" + positioningTeams.get(position).getTotalPoint() + "");
+        holder.txtAverage.setText(String.format("%d", positioningTeams.get(position).getTotalAverage()));
+        holder.txtPoint.setText(String.format("%d", positioningTeams.get(position).getTotalPoint()));
 
 
     }

@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.groupdetail;
 
 import android.content.Intent;
 import android.os.Build;
@@ -9,6 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
+import com.example.egebe.worldcup2018.Match;
+import com.example.egebe.worldcup2018.R;
+import com.example.egebe.worldcup2018.Stadium;
+import com.example.egebe.worldcup2018.models.WorldCupDataSingleton;
+import com.example.egebe.worldcup2018.WorldCupResponse;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

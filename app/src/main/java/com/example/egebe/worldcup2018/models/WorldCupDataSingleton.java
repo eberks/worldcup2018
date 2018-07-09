@@ -1,6 +1,8 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.models;
 
-class WorldCupDataSingleton {
+import com.example.egebe.worldcup2018.WorldCupResponse;
+
+public class WorldCupDataSingleton {
     private static WorldCupDataSingleton ourInstance = null;
 
     public static WorldCupDataSingleton getInstance() {

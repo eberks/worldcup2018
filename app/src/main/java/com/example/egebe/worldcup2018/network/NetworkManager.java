@@ -1,12 +1,12 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-class NetworkManager {
+public class NetworkManager {
     private static final NetworkManager ourInstance = new NetworkManager();
 
-    static NetworkManager getInstance() {
+    public static NetworkManager getInstance() {
         return ourInstance;
     }
 

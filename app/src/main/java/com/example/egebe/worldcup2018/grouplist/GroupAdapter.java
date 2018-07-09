@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.grouplist;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.egebe.worldcup2018.Group;
+import com.example.egebe.worldcup2018.R;
 
 import java.util.List;
 

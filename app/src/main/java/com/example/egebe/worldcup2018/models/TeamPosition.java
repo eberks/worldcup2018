@@ -1,6 +1,8 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.models;
 
 import android.support.annotation.NonNull;
+
+import com.example.egebe.worldcup2018.Team;
 
 public class TeamPosition implements Comparable<TeamPosition> {
 

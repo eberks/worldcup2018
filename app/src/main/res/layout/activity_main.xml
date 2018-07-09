@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#87CEFA"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".grouplist.MainActivity">
 
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary"
+        android:visibility="invisible" />
 
 
     <android.support.v7.widget.RecyclerView

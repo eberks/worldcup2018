@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.groupdetail;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.egebe.worldcup2018.Group;
+import com.example.egebe.worldcup2018.Match;
+import com.example.egebe.worldcup2018.R;
+import com.example.egebe.worldcup2018.WorldCupResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -32,7 +36,7 @@ public class GroupActivity extends Activity implements MatchDisplayAdapter.OnMat
 
         Intent intent = getIntent();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);

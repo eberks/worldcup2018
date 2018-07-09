@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.knockout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.egebe.worldcup2018.Knockout;
+import com.example.egebe.worldcup2018.Match;
+import com.example.egebe.worldcup2018.groupdetail.MatchDisplayAdapter;
+import com.example.egebe.worldcup2018.R;
+import com.example.egebe.worldcup2018.groupdetail.StadiumActivity;
 
 import java.util.ArrayList;
 

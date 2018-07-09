@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.knockout;
 
 
 import android.os.Build;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toolbar;
 
+import com.example.egebe.worldcup2018.R;
 import com.rd.PageIndicatorView;
 import com.squareup.picasso.Picasso;
 
@@ -25,12 +26,12 @@ public class KnockoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.knockout_layout);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.round_viewpager);
+        ViewPager viewPager = findViewById(R.id.round_viewpager);
         knockoutAdapter = new KnockoutAdapter(getSupportFragmentManager());
         viewPager.setAdapter(knockoutAdapter);
         PageIndicatorView pageIndicatorView = findViewById(R.id.page_indicator_view);

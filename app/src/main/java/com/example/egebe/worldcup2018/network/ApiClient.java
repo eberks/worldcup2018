@@ -1,4 +1,6 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.network;
+
+import com.example.egebe.worldcup2018.WorldCupResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

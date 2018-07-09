@@ -1,4 +1,4 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.groupdetail;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.egebe.worldcup2018.FullMatchObject;
+import com.example.egebe.worldcup2018.Match;
+import com.example.egebe.worldcup2018.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +32,7 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
     }
 
 
-    MatchDisplayAdapter(Context context, ArrayList<Match> listMatch, MatchDisplayAdapter.OnMatchItemClickListener listener) {
+    public MatchDisplayAdapter(Context context, ArrayList<Match> listMatch, MatchDisplayAdapter.OnMatchItemClickListener listener) {
         this.context = context;
         this.listMatch = listMatch;
         this.customInflater = LayoutInflater.from(this.context);
@@ -84,7 +88,7 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
         }
     }
 
-    interface OnMatchItemClickListener {
+    public interface OnMatchItemClickListener {
         void onMatchItemClicked(Match match);
     }
 }

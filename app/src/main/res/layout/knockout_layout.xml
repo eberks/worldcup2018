@@ -10,7 +10,7 @@
         android:id="@+id/deneme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.4"
+        android:alpha="0.25"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
-            attrs:targetApi="lollipop" />
+            attrs:targetApi="lollipop"
+            android:titleTextColor="#ffffff" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/round_viewpager"

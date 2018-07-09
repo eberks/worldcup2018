@@ -1,8 +1,11 @@
-package com.example.egebe.worldcup2018;
+package com.example.egebe.worldcup2018.knockout;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.egebe.worldcup2018.models.WorldCupDataSingleton;
+import com.example.egebe.worldcup2018.WorldCupResponse;
 
 public class KnockoutAdapter extends FragmentPagerAdapter {
 
