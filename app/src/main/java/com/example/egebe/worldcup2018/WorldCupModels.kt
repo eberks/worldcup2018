@@ -141,6 +141,8 @@ data class Match(var name: Int,
                  var away_team: Int,
                  var home_result: Int,
                  var away_result: Int,
+                 var home_penalty: Int,
+                 var away_penalty: Int,
                  var date: Date,
                  var stadium: Int,
         //   var channels: Channel

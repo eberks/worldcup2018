@@ -1,6 +1,7 @@
 package com.example.egebe.worldcup2018.knockout;
 
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,6 +31,8 @@ public class KnockoutActivity extends AppCompatActivity {
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setTitle("Knockout Phase");
+        toolbar.setTitleTextColor(Color.WHITE);
 
         ViewPager viewPager = findViewById(R.id.round_viewpager);
         knockoutAdapter = new KnockoutAdapter(getSupportFragmentManager());

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#008000"
     android:orientation="vertical"
     tools:context=".grouplist.MainActivity">
 
@@ -10,22 +11,25 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
+        android:background="#008000"
         android:visibility="invisible" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="320dp"
         android:layout_alignParentTop="true" />
 
-    <Button
+
+    <ImageButton
         android:id="@+id/knockout_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_margin="20dp"
-        android:text="Click for the Knockout" />
+        android:scaleType="fitXY"
+        android:src="@drawable/button_ball"
+        android:layout_gravity="center_horizontal"/>
 
 
 </LinearLayout>

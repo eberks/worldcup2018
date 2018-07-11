@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.egebe.worldcup2018.Group;
 import com.example.egebe.worldcup2018.R;
@@ -28,12 +29,12 @@ public class MainActivity extends AppCompatActivity implements GroupAdapter.OnGr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_group_layout);
 
         mPresenter = new MainPresenter(this);
         mPresenter.getWorldCupData();
 
-        Button kButton = findViewById(R.id.knockout_button);
+        ImageButton kButton = findViewById(R.id.knockout_button);
 
         kButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, KnockoutActivity.class);

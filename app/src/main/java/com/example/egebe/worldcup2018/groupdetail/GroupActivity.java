@@ -3,6 +3,7 @@ package com.example.egebe.worldcup2018.groupdetail;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -70,6 +71,9 @@ public class GroupActivity extends Activity implements MatchDisplayAdapter.OnMat
 
         backgroundImage = findViewById(R.id.group_background_image);
         Picasso.with(this).load("https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?cs=srgb&dl=ball-field-football-47730.jpg&fm=jpg").into(backgroundImage);
+
+        getActionBar().setTitle(group.getName());
+        toolbar.setTitleTextColor(Color.WHITE);
     }
 
     @Override

@@ -10,12 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textSize="18dp"
-        android:textColor="#008000"/>
+        android:textColor="#fff"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#FFD700"
+        android:background="#fff"
         android:layout_marginTop="40dp"
         />
 

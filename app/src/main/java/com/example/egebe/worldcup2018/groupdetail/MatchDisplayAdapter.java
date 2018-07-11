@@ -27,7 +27,7 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
     @NonNull
     @Override
     public MatchDisplayAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = customInflater.inflate(R.layout.bottom_row, parent, false);
+        View view = customInflater.inflate(R.layout.match_row, parent, false);
         return new ViewHolder(view);
     }
 
@@ -53,7 +53,6 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
         holder.awayTeam.setText(fullMatchObjectList.get(position).getAwayTeamName() + "");
         holder.homeScore.setText(fullMatchObjectList.get(position).getHomeTeamScore() + "");
         holder.awayScore.setText(fullMatchObjectList.get(position).getAwayTeamScore() + "");
-        holder.matchDate.setText(fullMatchObjectList.get(position).getMatchNumber() + "");
 
         holder.matchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +69,6 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView matchDate;
         TextView homeTeam;
         TextView homeScore;
         TextView awayScore;
@@ -79,7 +77,6 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            matchDate = itemView.findViewById(R.id.match_date);
             homeTeam = itemView.findViewById(R.id.home_team);
             homeScore = itemView.findViewById(R.id.home_score);
             awayScore = itemView.findViewById(R.id.away_score);

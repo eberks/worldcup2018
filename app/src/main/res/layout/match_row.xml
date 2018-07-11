@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/match_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:id="@+id/match_row">
+    android:orientation="horizontal">
 
-
-    <TextView
-        android:id="@+id/match_date"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        tools:text="5"
-        android:textColor="#000000"
-        android:textSize="16dp"/>
 
     <TextView
         android:id="@+id/home_team"
         android:layout_width="105dp"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:paddingEnd="15dp"
         android:paddingRight="15dp"
-        tools:text="Saudi Arabia"
         android:textColor="#000000"
-        android:textSize="16dp"/>
+        android:textSize="16sp"
+        tools:text="Saudi Arabia" />
 
     <TextView
         android:id="@+id/home_score"
@@ -39,17 +28,19 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:paddingLeft="15dp"
-        tools:text="4"
         android:textColor="#000000"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        tools:text="4" />
 
     <View
-        android:layout_width="30dp"
-        android:layout_height="0dp"
+        android:layout_width="10dp"
+        android:layout_height="2dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:background="#800000"></View>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#008000" />
 
     <TextView
         android:id="@+id/away_score"
@@ -59,9 +50,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="5dp"
-        tools:text="3"
         android:textColor="#000000"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        tools:text="3" />
 
     <TextView
         android:id="@+id/away_team"
@@ -71,9 +62,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="10dp"
-        tools:text="Turkiye"
         android:textColor="#000000"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        tools:text="Turkiye" />
 
 
 </LinearLayout>

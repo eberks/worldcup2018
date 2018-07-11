@@ -50,7 +50,7 @@ public class GroupTableAdapter extends RecyclerView.Adapter<GroupTableAdapter.Vi
     @NonNull
     @Override
     public GroupTableAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = customInflater.inflate(R.layout.top_row, parent, false);
+        View view = customInflater.inflate(R.layout.group_table_row, parent, false);
         return new ViewHolder(view);
     }
 

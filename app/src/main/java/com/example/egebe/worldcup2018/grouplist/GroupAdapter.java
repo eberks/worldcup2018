@@ -32,7 +32,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
     @NonNull
     @Override
     public GroupAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = customInflater.inflate(R.layout.each_row, parent, false);
+        View view = customInflater.inflate(R.layout.main_group_row, parent, false);
         return new ViewHolder(view);
     }
 
