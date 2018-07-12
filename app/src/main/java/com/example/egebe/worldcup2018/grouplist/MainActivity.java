@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.egebe.worldcup2018.Group;
 import com.example.egebe.worldcup2018.R;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements GroupAdapter.OnGr
         mPresenter = new MainPresenter(this);
         mPresenter.getWorldCupData();
 
-        ImageButton kButton = findViewById(R.id.knockout_button);
+        ImageView kButton = findViewById(R.id.knockout_button);
 
         kButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, KnockoutActivity.class);

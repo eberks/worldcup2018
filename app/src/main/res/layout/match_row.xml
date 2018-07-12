@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/home_team"
-        android:layout_width="105dp"
+        android:layout_width="108dp"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
@@ -18,6 +18,7 @@
         android:paddingRight="15dp"
         android:textColor="#000000"
         android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="Saudi Arabia" />
 
     <TextView
@@ -25,11 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="4" />
 
     <View
@@ -37,9 +39,9 @@
         android:layout_height="2dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:background="#008000" />
 
     <TextView
@@ -47,11 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="5dp"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="3" />
 
     <TextView
@@ -59,13 +62,24 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="10dp"
         android:textColor="#000000"
-        android:textSize="16dp"
-        tools:text="Turkiye" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Switzerland" />
+
+    <ImageView
+        android:id="@+id/click_arrow"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/arrow_icon" />
 
 
 </LinearLayout>
+
+
 

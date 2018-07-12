@@ -27,18 +27,18 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Flag         Name                     P  W/D/L  S/C  A   P"
+            android:text="Flag         Name                    P   W/D/L  S/C   A   P"
             android:textColor="#8B0000"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="1dp"
-            android:background="#008000"></View>
+            android:background="#008000" />
 
 
         <android.support.v7.widget.RecyclerView
@@ -51,7 +51,7 @@
             android:layout_height="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:background="#008000"></View>
+            android:background="#008000" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/bottom_view"
@@ -63,7 +63,7 @@
             android:layout_height="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:background="#008000"></View>
+            android:background="#008000" />
 
         <TextView
             android:id="@+id/winner_text"
@@ -72,7 +72,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textColor="#8B0000"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

@@ -51,7 +51,8 @@ public class StadiumActivity extends AppCompatActivity implements OnMapReadyCall
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);
-        getActionBar().setTitle("Match Information");
+        // getActionBar().setTitle("Match Information");
+
         toolbar.setTitleTextColor(Color.WHITE);
 
 
@@ -95,13 +96,11 @@ public class StadiumActivity extends AppCompatActivity implements OnMapReadyCall
 
             TextView penaltyResult = findViewById(R.id.penalties_txt);
             penaltyResult.setText("(P) " + match.getHome_penalty() + " - " + match.getAway_penalty() + " (P)");
-
         }
-
 
         ImageView stadiumImage = findViewById(R.id.stadium_img);
         Picasso.with(this).load(tempStadium.getImage()).into(stadiumImage);
-
+        getActionBar().setTitle(homeTeam.getName() + " VS " + awayTeam.getName());
 
     }
 
