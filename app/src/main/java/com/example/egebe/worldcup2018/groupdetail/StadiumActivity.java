@@ -1,7 +1,6 @@
 package com.example.egebe.worldcup2018.groupdetail;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +17,7 @@ import com.example.egebe.worldcup2018.Stadium;
 import com.example.egebe.worldcup2018.Team;
 import com.example.egebe.worldcup2018.WorldCupResponse;
 import com.example.egebe.worldcup2018.models.WorldCupDataSingleton;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -51,10 +51,6 @@ public class StadiumActivity extends AppCompatActivity implements OnMapReadyCall
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);
-        // getActionBar().setTitle("Match Information");
-
-        toolbar.setTitleTextColor(Color.WHITE);
-
 
         mIntent = getIntent();
         Match match = (Match) mIntent.getSerializableExtra("extra_match");
@@ -100,7 +96,7 @@ public class StadiumActivity extends AppCompatActivity implements OnMapReadyCall
 
         ImageView stadiumImage = findViewById(R.id.stadium_img);
         Picasso.with(this).load(tempStadium.getImage()).into(stadiumImage);
-        getActionBar().setTitle(homeTeam.getName() + " VS " + awayTeam.getName());
+        getActionBar().setTitle(homeTeam.getName() + " vs " + awayTeam.getName());
 
     }
 
@@ -123,7 +119,12 @@ public class StadiumActivity extends AppCompatActivity implements OnMapReadyCall
                 .snippet("City : " + tempStadium.getCity()));
 
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        float zoomLevel = 10.0f;
+        CameraUpdate center = CameraUpdateFactory.newLatLng(latLng);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(zoomLevel);
+
+        googleMap.moveCamera(center);
+        googleMap.animateCamera(zoom);
     }
 
     @Override

@@ -14,37 +14,101 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:weightSum="108">
 
 
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#008000" />
+            android:layout_height="0dp"
+            android:background="#008000"
+            android:layout_weight="11"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Flag         Name                    P   W/D/L  S/C   A   P"
-            android:textColor="#8B0000"
-            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="24"
+                android:text="Flag"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="46"
+                android:text="Name"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="P"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="W/D/L"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="S/C"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="A"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="P"
+                android:textColor="#8B0000"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="1dp"
-            android:background="#008000" />
+            android:background="#008000"
+            android:layout_weight="0.5" />
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/top_view"
             android:layout_width="match_parent"
-            android:layout_height="180dp" />
+            android:layout_height="0dp"
+            android:layout_weight="40" />
 
         <View
             android:layout_width="wrap_content"
@@ -56,7 +120,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/bottom_view"
             android:layout_width="match_parent"
-            android:layout_height="220dp" />
+            android:layout_height="0dp"
+            android:layout_weight="46" />
 
         <View
             android:layout_width="wrap_content"
@@ -68,12 +133,15 @@
         <TextView
             android:id="@+id/winner_text"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textColor="#8B0000"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_weight="10" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

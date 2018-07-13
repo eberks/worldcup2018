@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/match_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/match_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="11 Jun" />
 
 
     <TextView
         android:id="@+id/home_team"
-        android:layout_width="108dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:paddingEnd="15dp"
-        android:paddingRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/home_score"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -24,34 +32,29 @@
     <TextView
         android:id="@+id/home_score"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingStart="15dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tire"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="4" />
 
     <View
+        android:id="@+id/tire"
         android:layout_width="10dp"
         android:layout_height="2dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="#008000" />
 
     <TextView
         android:id="@+id/away_score"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="5dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tire"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -60,26 +63,31 @@
     <TextView
         android:id="@+id/away_team"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/away_score"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:text="Switzerland" />
+        tools:text="Switzerland"
+
+        />
 
     <ImageView
         android:id="@+id/click_arrow"
-        android:layout_width="30dp"
+        android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/arrow_icon" />
 
 
-</LinearLayout>
+</RelativeLayout>
 
 
 

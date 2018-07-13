@@ -83,6 +83,7 @@ data class Group(var name: String,
         var numOfLose = 0
 
 
+
         for (i in 0 until this.matches.size) {
             if (this.matches[i].away_team == currentTeam.id) numOfMatch++
         }
@@ -90,18 +91,18 @@ data class Group(var name: String,
             if (this.matches[i].home_team == currentTeam.id) numOfMatch++
         }
         for (i in 0 until this.matches.size) {
-            if (this.matches[i].away_team == currentTeam.id && this.matches[i].away_result > this.matches.get(i).home_result) {
+            if (this.matches[i].away_team == currentTeam.id && this.matches[i].away_result!! > this.matches.get(i).home_result!!) {
                 numOfWin++
-            } else if (this.matches.get(i).away_team == currentTeam.id && this.matches[i].away_result < this.matches.get(i).home_result) {
+            } else if (this.matches.get(i).away_team == currentTeam.id && this.matches[i].away_result!! < this.matches.get(i).home_result!!) {
                 numOfLose++
             } else if (this.matches.get(i).away_team == currentTeam.id && this.matches.get(i).away_result == this.matches.get(i).home_result) {
                 numOfDraw++
             }
         }
         for (i in 0 until this.matches.size) {
-            if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result > this.matches.get(i).away_result) {
+            if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result!! > this.matches.get(i).away_result!!) {
                 numOfWin++
-            } else if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result < this.matches.get(i).away_result) {
+            } else if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result!! < this.matches.get(i).away_result!!) {
                 numOfLose++
             } else if (this.matches.get(i).home_team == currentTeam.id && this.matches.get(i).home_result == this.matches.get(i).away_result) {
                 numOfDraw++
@@ -113,15 +114,15 @@ data class Group(var name: String,
 
         for (i in 0 until this.matches.size) {
             if (this.matches.get(i).away_team == currentTeam.id) {
-                totalGS = totalGS + this.matches.get(i).away_result
-                totalGC = totalGC + this.matches.get(i).home_result
+                totalGS = totalGS + this.matches.get(i).away_result!!
+                totalGC = totalGC + this.matches.get(i).home_result!!
             }
 
         }
         for (i in 0 until this.matches.size) {
             if (this.matches.get(i).home_team == currentTeam.id) {
-                totalGS = totalGS + this.matches.get(i).home_result
-                totalGC = totalGC + this.matches.get(i).away_result
+                totalGS = totalGS + this.matches.get(i).home_result!!
+                totalGC = totalGC + this.matches.get(i).away_result!!
             }
 
         }
@@ -139,8 +140,8 @@ data class Match(var name: Int,
                  var type: String,
                  var home_team: Int,
                  var away_team: Int,
-                 var home_result: Int,
-                 var away_result: Int,
+                 var home_result: Int?,
+                 var away_result: Int?,
                  var home_penalty: Int,
                  var away_penalty: Int,
                  var date: Date,
@@ -211,12 +212,21 @@ data class Match(var name: Int,
         }
         for (i in teams.indices) {
             if (teams[i].id == this.home_team)
-                homeTeamScore = this.home_result
+                if (this.home_result == null) {
+                    homeTeamScore = 123456789
+                } else {
+                    homeTeamScore = this.home_result!!
+                }
+
         }
         for (i in teams.indices) {
             if (teams[i].id == this.away_team)
+                if (this.away_result == null) {
+                    awayTeamScore = 123456789
+                } else {
+                    awayTeamScore = this.away_result!!
+                }
 
-                awayTeamScore = this.away_result
         }
 
         matchNumber = this.matchday;
@@ -263,8 +273,8 @@ data class Stadium(var id: Int,
 
 data class FullMatchObject(var homeTeamName: String,
                            var awayTeamName: String,
-                           var homeTeamScore: Int,
-                           var awayTeamScore: Int,
+                           var homeTeamScore: Int?,
+                           var awayTeamScore: Int?,
                            var matchNumber: Int
 
 ) : Serializable

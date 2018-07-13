@@ -6,15 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.egebe.worldcup2018.FullMatchObject;
 import com.example.egebe.worldcup2018.Match;
 import com.example.egebe.worldcup2018.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapter.ViewHolder> {
 
@@ -51,8 +54,20 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
 
         holder.homeTeam.setText(fullMatchObjectList.get(position).getHomeTeamName() + "");
         holder.awayTeam.setText(fullMatchObjectList.get(position).getAwayTeamName() + "");
-        holder.homeScore.setText(fullMatchObjectList.get(position).getHomeTeamScore() + "");
-        holder.awayScore.setText(fullMatchObjectList.get(position).getAwayTeamScore() + "");
+
+        if (fullMatchObjectList.get(position).getHomeTeamScore() == 123456789 && fullMatchObjectList.get(position).getAwayTeamScore() == 123456789) {
+
+            holder.homeScore.setText("");
+            holder.awayScore.setText("");
+
+        } else {
+            holder.homeScore.setText(fullMatchObjectList.get(position).getHomeTeamScore() + "");
+            holder.awayScore.setText(fullMatchObjectList.get(position).getAwayTeamScore() + "");
+        }
+        Date date = listMatch.get(position).getDate();
+        SimpleDateFormat monthDay = new SimpleDateFormat("dd MMM", Locale.ENGLISH);
+        String month_name = monthDay.format(date);
+        holder.matchDate.setText(month_name);
 
         holder.matchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +88,9 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
         TextView homeScore;
         TextView awayScore;
         TextView awayTeam;
-        LinearLayout matchLayout;
+        RelativeLayout matchLayout;
+        TextView matchDate;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -82,6 +99,7 @@ public class MatchDisplayAdapter extends RecyclerView.Adapter<MatchDisplayAdapte
             awayScore = itemView.findViewById(R.id.away_score);
             awayTeam = itemView.findViewById(R.id.away_team);
             matchLayout = itemView.findViewById(R.id.match_row);
+            matchDate = itemView.findViewById(R.id.match_date);
         }
     }
 

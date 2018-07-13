@@ -10,7 +10,7 @@
         android:id="@+id/deneme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.25"
+        android:alpha="0.3"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -22,7 +22,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#008000" />
+            android:background="#008000"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/round_viewpager"
